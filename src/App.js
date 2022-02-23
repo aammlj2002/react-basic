@@ -1,11 +1,19 @@
 import React from "react";
 class App extends React.Component {
+    state = {
+        items: [
+            { id: 1, name: "Apple", price: 0.99 },
+            { id: 2, name: "mango", price: 0.89 },
+        ],
+    };
     render() {
         return (
             <div>
                 <h1>hello react</h1>
                 <ul>
-                    <Item name="apple" price="0.99" />
+                    {this.state.items.map((i) => {
+                        return <Item name={i.name} price={i.price} />;
+                    })}
                 </ul>
             </div>
         );
