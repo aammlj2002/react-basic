@@ -5,8 +5,7 @@ class App extends React.Component {
             <div>
                 <h1>hello react</h1>
                 <ul>
-                    <Item />
-                    <Item />
+                    <Item name="apple" price="0.99" />
                 </ul>
             </div>
         );
@@ -14,7 +13,11 @@ class App extends React.Component {
 }
 class Item extends React.Component {
     render() {
-        return <li>item</li>;
+        return (
+            <li>
+                {this.props.name} is ${this.props.price}
+            </li>
+        );
     }
 }
 export default App;
