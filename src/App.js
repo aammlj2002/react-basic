@@ -1,12 +1,13 @@
 import React from "react";
 class App extends React.Component {
+    nameRef = React.createRef();
+    priceRef = React.createRef();
     add = () => {
         let id = this.state.items.length + 1;
+        let name = this.nameRef.current.value;
+        let price = this.priceRef.current.value;
         this.setState({
-            items: [
-                ...this.state.items,
-                { id, name: `Item ${id}`, price: 0.01 * id },
-            ],
+            items: [...this.state.items, { id, name, price }],
         });
     };
     state = {
@@ -19,12 +20,18 @@ class App extends React.Component {
         return (
             <div>
                 <h1>hello react</h1>
+                <input type="text" ref={this.nameRef}></input>
+                <br />
+                <input type="text" ref={this.priceRef}></input>
+                <br />
+                <button onClick={this.add}>add item</button>
                 <ul>
                     {this.state.items.map((i) => {
-                        return <Item name={i.name} price={i.price} />;
+                        return (
+                            <Item key={i.id} name={i.name} price={i.price} />
+                        );
                     })}
                 </ul>
-                <button onClick={this.add}>add item</button>
             </div>
         );
     }
