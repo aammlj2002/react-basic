@@ -1,5 +1,14 @@
 import React from "react";
 class App extends React.Component {
+    add = () => {
+        let id = this.state.items.length + 1;
+        this.setState({
+            items: [
+                ...this.state.items,
+                { id, name: `Item ${id}`, price: 0.01 * id },
+            ],
+        });
+    };
     state = {
         items: [
             { id: 1, name: "Apple", price: 0.99 },
@@ -15,6 +24,7 @@ class App extends React.Component {
                         return <Item name={i.name} price={i.price} />;
                     })}
                 </ul>
+                <button onClick={this.add}>add item</button>
             </div>
         );
     }
