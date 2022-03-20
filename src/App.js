@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./Header";
 class App extends React.Component {
     state = {
         items: [
@@ -38,7 +39,9 @@ class InputForm extends React.Component{
     render(){
         return (
             <div>
-                <h1>hello react</h1>
+                <Header>
+                    <h1>Hello React</h1>
+                </Header>
                 <input type="text" ref={this.nameRef}></input>
                 <br />
                 <input type="text" ref={this.priceRef}></input>
@@ -48,6 +51,8 @@ class InputForm extends React.Component{
         );
     }
 }
+
+
 class Item extends React.Component {
     render() {
         return (
@@ -57,4 +62,5 @@ class Item extends React.Component {
         );
     }
 }
+
 export default App;
