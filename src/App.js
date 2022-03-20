@@ -16,7 +16,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <InputForm add={this.add}/>
+                <InputForm add={this.add} />
                 <ul>
                     {this.state.items.map((i) => {
                         return (
@@ -28,20 +28,18 @@ class App extends React.Component {
         );
     }
 }
-class InputForm extends React.Component{
+class InputForm extends React.Component {
     nameRef = React.createRef();
     priceRef = React.createRef();
-    add = ()=>{
+    add = () => {
         let name = this.nameRef.current.value;
         let price = this.priceRef.current.value;
         this.props.add(name, price);
-    }
-    render(){
+    };
+    render() {
         return (
             <div>
-                <Header>
-                    <h1>Hello React</h1>
-                </Header>
+                <Header name="react"></Header>
                 <input type="text" ref={this.nameRef}></input>
                 <br />
                 <input type="text" ref={this.priceRef}></input>
@@ -52,15 +50,10 @@ class InputForm extends React.Component{
     }
 }
 
-
-class Item extends React.Component {
-    render() {
-        return (
-            <li>
-                {this.props.name} is ${this.props.price}
-            </li>
-        );
-    }
-}
+const Item = ({ name, price }) => (
+    <li>
+        {name} is ${price}
+    </li>
+);
 
 export default App;
