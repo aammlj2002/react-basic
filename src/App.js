@@ -8,7 +8,19 @@ const App = () => {
                 setUsers(json.data);
             });
     }, []);
-
+    const add = () => {
+        fetch("https://reqres.in/api/users", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ first_name: "Tom" }),
+        })
+            .then((res) => {
+                return res.json();
+            })
+            .then((tom) => {
+                setUsers([...users, tom]);
+            });
+    };
     return (
         <div>
             <ul>
@@ -16,6 +28,7 @@ const App = () => {
                     <li key={user.id}>{user.first_name}</li>
                 ))}
             </ul>
+            <button onClick={add}>new user</button>
         </div>
     );
 };
